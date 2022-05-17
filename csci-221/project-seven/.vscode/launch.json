@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "/Users/jaegerful/Documents/university-schoolwork/csci-221/project-seven",
+      "environment": [],
+      "program": "/Users/jaegerful/Documents/university-schoolwork/csci-221/project-seven/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "lldb",
+      "externalConsole": true
+    }
+  ]
+}

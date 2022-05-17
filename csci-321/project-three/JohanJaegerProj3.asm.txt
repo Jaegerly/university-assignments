@@ -1,0 +1,27 @@
+.386
+.model flat, stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode:DWORD
+
+.data
+
+val1     byte	255d
+val2     sbyte  -128d
+val3     word	65535d
+val4	 sword	-32768d
+val5	 dword	4294967295d
+val6	 sdword	-2147483648d
+val7	 fword	10d
+val8	 qword	20d
+val9	 tbyte	30d
+val10	 real4	-30.2E2
+val11	 real8	+80.2E-6
+val12	 real10 -10.
+
+.code
+
+main PROC
+	
+	INVOKE ExitProcess, 0
+main ENDP
+END main
