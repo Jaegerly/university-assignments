@@ -1,14 +1,15 @@
-def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive
-    total = sum(array[low:(high + 1)])
-    length = (high + 1) - low
+""" split partition in two, where both slices are <= or >= a pivot. """
 
-    pivot = total / length
+def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
+    total = sum(array[low:(high + 1)]) # sum of elements in partition
+    length = (high + 1) - low # to avoid a -1 case.
+
+    pivot = total / length # this way of calculating a pivot ensures a central number.
 
     while True:
-
         while array[low] < pivot:
-            low += 1            
-    
+            low += 1
+
         while array[high] > pivot:
             high -= 1
 
@@ -16,21 +17,24 @@ def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inc
             return high
 
         else:
-            storage = array[low]
+            temporary = array[low]
             array[low] = array[high]
-            array[high] = storage
+            array[high] = temporary
 
             low += 1
-            high -= 1 
+            high -= 1
 
-def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive
-    if low == high:
+""" split partition in two and sort both partitions. """
+
+def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
+    if low == high: # base case for quicksort.
         return
 
     divider = partition(array, low, high)
+
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
-
+     
     return
 
 """ tests for quicksort. """
