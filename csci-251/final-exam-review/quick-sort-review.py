@@ -1,10 +1,10 @@
-""" split partition in two, where both slices are <= or >= a pivot. """
+""" definition for partition """
 
-def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
-    total = sum(array[low:(high + 1)]) # sum of elements in partition
-    length = (high + 1) - low # to avoid a -1 case.
+def partition(array: list[int], low: int, high: int):
+    total = sum(array[low:(high + 1)])
+    length = (high + 1) - low
 
-    pivot = total / length # this way of calculating a pivot ensures a central number.
+    pivot = total // length
 
     while True:
         while array[low] < pivot:
@@ -17,25 +17,23 @@ def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inc
             return high
 
         else:
-            temporary = array[low]
-            array[low] = array[high]
-            array[high] = temporary
+            temporary = array[high]
+            array[high] = array[low]
+            array[low] = temporary
 
             low += 1
-            high -= 1
+            high -= 1             
 
-""" split partition in two and sort both partitions. """
+""" definition for quicksort """
 
-def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
-    if low == high: # base case for quicksort.
+def quicksort(array: list[int], low: int, high: int):
+    if (low == high):
         return
 
     divider = partition(array, low, high)
 
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
-     
-    return
 
 """ tests for quicksort. """
 
