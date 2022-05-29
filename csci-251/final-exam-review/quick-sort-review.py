@@ -1,14 +1,14 @@
-""" definition for partition """
+""" definition for partition """       
 
-def partition(array: list[int], low: int, high: int):
+def partition(array: list[int], low: int, high: int): # inclusive bounds.
     total = sum(array[low:(high + 1)])
     length = (high + 1) - low
 
-    pivot = total // length
+    pivot = total // length # ensure pivot with central tendency.
 
     while True:
         while array[low] < pivot:
-            low += 1
+            low +=1
 
         while array[high] > pivot:
             high -= 1
@@ -17,17 +17,18 @@ def partition(array: list[int], low: int, high: int):
             return high
 
         else:
-            temporary = array[high]
-            array[high] = array[low]
-            array[low] = temporary
+            temporary = array[low]
+            array[low] = array[high]
+            array[high] = temporary
 
             low += 1
-            high -= 1             
+            high -= 1
+
 
 """ definition for quicksort """
 
-def quicksort(array: list[int], low: int, high: int):
-    if (low == high):
+def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
+    if low == high:
         return
 
     divider = partition(array, low, high)
