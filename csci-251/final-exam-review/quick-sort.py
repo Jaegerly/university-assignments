@@ -1,36 +1,36 @@
-def partition(array: list[int], low: int, high: int):    
-    total = sum(array[low : (high + 1)])
-    length = (high + 1) - low
+""" definition for partition """       
 
-    pivot = total // length # this pivot ensures central number.
+def partition(array: list[int], low: int, high: int): # inclusive bounds.
+    pivot = array[high] # no average number, but simpler code.
 
     while True:
-        while (array[low] < pivot):
+        while array[low] < pivot:
             low += 1
 
-        while (array[high] > pivot):
+        while array[high] > pivot:
             high -= 1
 
-        if (high <= low): # there is the possibility that 'low' and 'high' are equal. in such case, 'low' and 'high' equal 'pivot'.
+        if high < low: # should always be 'high < low', not 'high <= low'. otherwise, infinite recursion is possible.
             return high
 
-        else: 
-            storage = array[low]
-            array[low] = array[high]
-            array[high] = storage
+        else:
+            temporary = array[high]
+            array[high] = array[low]
+            array[low] = temporary
 
             low += 1
             high -= 1
 
-def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
-    if low == high: # this check is made for 'partition().' thus, 'partition()' does not have to make same check.
+""" definition for quicksort """
+
+def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
+    if low == high:
         return
 
-    divider = partition(array, low, high) # split array up into partitions separated by a pivot.
-
+    divider = partition(array, low, high)
+    
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
-
 
 """ tests for quicksort. """
 
