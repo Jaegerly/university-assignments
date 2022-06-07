@@ -1,7 +1,6 @@
-""" definition for partition """       
-
+""" definition for partition """
 def partition(array: list[int], low: int, high: int): # inclusive bounds.
-    pivot = array[high] # no average number, but simpler code.
+    pivot = array[high]
 
     while True:
         while array[low] < pivot:
@@ -10,9 +9,8 @@ def partition(array: list[int], low: int, high: int): # inclusive bounds.
         while array[high] > pivot:
             high -= 1
 
-        if high < low: # should always be 'high < low', not 'high <= low'. otherwise, infinite recursion is possible.
+        if high < low:
             return high
-
         else:
             temporary = array[high]
             array[high] = array[low]
@@ -22,13 +20,11 @@ def partition(array: list[int], low: int, high: int): # inclusive bounds.
             high -= 1
 
 """ definition for quicksort """
-
 def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
     if low == high:
         return
 
-    divider = partition(array, low, high)
-    
+    divider = partition(array, low, high) # returns upper bound of lower partition.
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
 

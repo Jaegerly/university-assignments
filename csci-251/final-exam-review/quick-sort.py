@@ -27,7 +27,7 @@ def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
     if low == high:
         return
 
-    divider = partition(array, low, high)
+    divider = partition(array, low, high) # returns upper bound of lower partition.
     
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
