@@ -5,26 +5,28 @@ def partition(array: list[int], low: int, high: int): # inclusive bounds.
     while True:
         while array[low] < pivot:
             low += 1
-
+        
         while array[high] > pivot:
             high -= 1
 
         if high < low:
             return high
+
         else:
-            temporary = array[high]
-            array[high] = array[low]
-            array[low] = temporary
+            temp = array[low]
+            array[low] = array[high]
+            array[high] = temp
 
             low += 1
             high -= 1
-
+        
 """ definition for quicksort """
 def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
     if low == high:
         return
 
-    divider = partition(array, low, high) # returns upper bound of lower partition.
+    divider = partition(array, low, high)
+
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
 
