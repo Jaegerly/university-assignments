@@ -1,32 +1,30 @@
-""" definition for partition """
-def partition(array: list[int], low: int, high: int): # inclusive bounds.
+""" definition for partition. """
+def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive.
     pivot = array[high]
 
     while True:
         while array[low] < pivot:
             low += 1
-        
+
         while array[high] > pivot:
             high -= 1
 
         if high < low:
             return high
 
-        else:
-            temp = array[low]
-            array[low] = array[high]
-            array[high] = temp
+        temporary = array[high]
+        array[high] = array[low]
+        array[low] = temporary
 
-            low += 1
-            high -= 1
-        
-""" definition for quicksort """
-def quicksort(array: list[int], low: int, high: int): # inclusive bounds.
+        low += 1
+        high -= 1
+
+""" definition for quicksort. """
+def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive. 
     if low == high:
         return
 
     divider = partition(array, low, high)
-
     quicksort(array, low, divider)
     quicksort(array, divider + 1, high)
 
