@@ -1,5 +1,5 @@
 """ definition for partition. """
-def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive.
+def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
     pivot = array[high]
 
     while True:
@@ -12,15 +12,16 @@ def partition(array: list[int], low: int, high: int): # 'low' and 'high' are inc
         if high < low:
             return high
 
-        temporary = array[high]
-        array[high] = array[low]
-        array[low] = temporary
+        else:
+            temp = array[high]
+            array[high] = array[low]
+            array[low] = temp
 
-        low += 1
-        high -= 1
+            low += 1
+            high -= 1
 
 """ definition for quicksort. """
-def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive. 
+def quicksort(array: list[int], low: int, high: int): # 'low' and 'high' are inclusive bounds.
     if low == high:
         return
 

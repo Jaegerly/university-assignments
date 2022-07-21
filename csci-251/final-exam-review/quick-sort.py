@@ -13,13 +13,14 @@ def partition(array: list[int], low: int, high: int): # inclusive bounds.
         if high < low: # should always be 'high < low', not 'high <= low'. otherwise, infinite recursion is possible.
             return high
 
-        else:
-            temporary = array[high]
-            array[high] = array[low]
-            array[low] = temporary
+        # implicit else.
 
-            low += 1
-            high -= 1
+        temporary = array[high]
+        array[high] = array[low]
+        array[low] = temporary
+
+        low += 1
+        high -= 1
 
 """ definition for quicksort """
 
